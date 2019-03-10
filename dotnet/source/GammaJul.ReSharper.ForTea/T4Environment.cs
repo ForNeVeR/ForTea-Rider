@@ -27,17 +27,18 @@ namespace GammaJul.ReSharper.ForTea {
 
 		[NotNull]
 		public Optional<ITextTemplatingComponents> Components
-			=> _components.Value;
+			=> Optional<ITextTemplatingComponents>.Null;
 
 		/// <summary>Gets the version of the Visual Studio we're running under, two components only, <c>Major.Minor</c>. Example: “8.0”.</summary>
 		[NotNull]
 		public Version2 VsVersion2
-			=> _vsEnvironmentInformation.VsVersion2;
+			=> new Version2();
 
 		/// <summary>Gets the target framework ID.</summary>
 		[NotNull]
 		public TargetFrameworkId TargetFrameworkId {
 			get {
+				return JetBrains.Util.Dotnet.TargetFrameworkIds.TargetFrameworkId.Create("netcoreapp2.2");
 				if (_targetFrameworkId == null)
 					throw CreateUnsupportedEnvironmentException();
 				return _targetFrameworkId;
@@ -121,10 +122,10 @@ namespace GammaJul.ReSharper.ForTea {
 				.FullPath;
 
 		public T4Environment(
-			[NotNull] IVsEnvironmentInformation vsEnvironmentInformation,
-			[NotNull] RawVsServiceProvider rawVsServiceProvider
+			// [NotNull] IVsEnvironmentInformation vsEnvironmentInformation,
+			// [NotNull] RawVsServiceProvider rawVsServiceProvider
 		) {
-			_vsEnvironmentInformation = vsEnvironmentInformation;
+			/*_vsEnvironmentInformation = vsEnvironmentInformation;
 			
 			_components = Lazy.Of(() => new Optional<ITextTemplatingComponents>(rawVsServiceProvider.Value.GetService<STextTemplating, ITextTemplatingComponents>()), true);
 
@@ -184,7 +185,7 @@ namespace GammaJul.ReSharper.ForTea {
 					_textTemplatingAssemblyNames = EmptyArray<string>.Instance;
 					break;
 
-			}
+			}*/
 		}
 
 	}
