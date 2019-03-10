@@ -49,3 +49,12 @@ Visual Basic T4 files aren't supported yet.
 Custom T4 directives aren't supported yet.  
 
 Licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+Building for Rider
+------------------
+
+```console
+$ ./gradlew buildPlugin
+```
+
+After that, pick the built plugin ZIP from `build/distributions`.

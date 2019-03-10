@@ -20,9 +20,9 @@ ext {
     isWindows = Os.isFamily(Os.FAMILY_WINDOWS)
     sdkVersion = "2018.3"
     rdLibDirectory = new File(repoRoot, "build/riderRD-$sdkVersion-SNAPSHOT/lib/rd")
-    dotNetDir = new File(repoRoot, "src/dotnet")
+    dotNetDir = new File(repoRoot, "dotnet")
     dotNetPluginId = "ReSharperPlugin.ForTea.Rider"
-    dotnetSolution = new File(repoRoot, "ForTea.Rider.sln")
+    dotnetSolution = new File(repoRoot, "dotnet/GammaJul.ReSharper.ForTea.sln")
 }
 
 repositories {
@@ -170,10 +170,10 @@ patchPluginXml {
 prepareSandbox {
     dependsOn compileDotNet
 
-    def outputFolder = "$dotNetDir/$dotNetPluginId/bin/${dotNetPluginId}.Rider/$BuildConfiguration"
+    def outputFolder = "$dotNetDir/source/GammaJul.ReSharper.ForTea/bin/$BuildConfiguration"
     def dllFiles = [
-            "$outputFolder/${dotNetPluginId}.dll",
-            "$outputFolder/${dotNetPluginId}.pdb"
+            "$outputFolder/GammaJul.ReSharper.ForTea.dll",
+            "$outputFolder/GammaJul.ReSharper.ForTea.pdb"
     ]
 
     dllFiles.forEach({ f ->
