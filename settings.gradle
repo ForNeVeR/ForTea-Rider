@@ -1,0 +1,3 @@
+rootProject.name = 'fortea.rider'
+
+include ':protocol'
