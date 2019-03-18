@@ -6,9 +6,9 @@
   <idea-version since-build="_PLACEHOLDER_" until-build="_PLACEHOLDER_" />
   <depends>com.intellij.modules.rider</depends>
 
-  <description>
-<![CDATA[
-<p>Sample description</p>
-]]>
-  </description>
+  <description>T4 templates support in Rider</description>
+  <extensions defaultExtensionNs="com.intellij">
+      <fileTypeFactory id="T4" implementation="com.jetbrains.rider.t4plugin.T4FileTypeFactory" />
+
+  </extensions>
 </idea-plugin>
