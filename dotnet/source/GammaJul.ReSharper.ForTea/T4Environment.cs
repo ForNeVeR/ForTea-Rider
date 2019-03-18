@@ -38,7 +38,7 @@ namespace GammaJul.ReSharper.ForTea {
 		[NotNull]
 		public TargetFrameworkId TargetFrameworkId {
 			get {
-				return JetBrains.Util.Dotnet.TargetFrameworkIds.TargetFrameworkId.Create("netcoreapp2.2");
+				return JetBrains.Util.Dotnet.TargetFrameworkIds.TargetFrameworkId.Create("netcoreapp2.1");
 				if (_targetFrameworkId == null)
 					throw CreateUnsupportedEnvironmentException();
 				return _targetFrameworkId;
