@@ -18,7 +18,7 @@ namespace GammaJul.ReSharper.ForTea {
 	[ShellComponent]
 	public class T4Environment {
 
-		[NotNull] private readonly IVsEnvironmentInformation _vsEnvironmentInformation;
+		// [NotNull] private readonly IVsEnvironmentInformation _vsEnvironmentInformation;
 		[NotNull] private readonly Lazy<Optional<ITextTemplatingComponents>> _components;
 		[NotNull] private readonly string[] _textTemplatingAssemblyNames;
 		[CanBeNull] private readonly TargetFrameworkId _targetFrameworkId;
@@ -74,30 +74,31 @@ namespace GammaJul.ReSharper.ForTea {
 
 		[NotNull]
 		private IList<FileSystemPath> ReadIncludePaths() {
-			string registryKey = _vsEnvironmentInformation.GetVisualStudioGlobalRegistryPath()
-				+ @"_Config\TextTemplating\IncludeFolders\.tt";
+			// string registryKey = _vsEnvironmentInformation.GetVisualStudioGlobalRegistryPath()
+			// 	+ @"_Config\TextTemplating\IncludeFolders\.tt";
+			return new List<FileSystemPath>();
 
-			using (RegistryKey key = Registry.CurrentUser.OpenSubKey(registryKey)) {
-
-				if (key == null)
-					return EmptyList<FileSystemPath>.InstanceList;
-
-				string[] valueNames = key.GetValueNames();
-				if (valueNames.Length == 0)
-					return EmptyList<FileSystemPath>.InstanceList;
-
-				var paths = new List<FileSystemPath>(valueNames.Length);
-				foreach (string valueName in valueNames) {
-					var value = key.GetValue(valueName) as string;
-					if (String.IsNullOrEmpty(value))
-						continue;
-
-					var path = FileSystemPath.TryParse(value);
-					if (!path.IsEmpty && path.IsAbsolute)
-						paths.Add(path);
-				}
-				return paths;
-			}
+			// using (RegistryKey key = Registry.CurrentUser.OpenSubKey(registryKey)) {
+			//
+			// 	if (key == null)
+			// 		return EmptyList<FileSystemPath>.InstanceList;
+			//
+			// 	string[] valueNames = key.GetValueNames();
+			// 	if (valueNames.Length == 0)
+			// 		return EmptyList<FileSystemPath>.InstanceList;
+			//
+			// 	var paths = new List<FileSystemPath>(valueNames.Length);
+			// 	foreach (string valueName in valueNames) {
+			// 		var value = key.GetValue(valueName) as string;
+			// 		if (String.IsNullOrEmpty(value))
+			// 			continue;
+			//
+			// 		var path = FileSystemPath.TryParse(value);
+			// 		if (!path.IsEmpty && path.IsAbsolute)
+			// 			paths.Add(path);
+			// 	}
+			// 	return paths;
+			// }
 		}
 
 		[NotNull]
@@ -113,13 +114,13 @@ namespace GammaJul.ReSharper.ForTea {
 				name,
 				majorVersion);
 
-		[NotNull]
-		[Pure]
-		private static string CreateDevEnvPublicAssemblyName([NotNull] IVsEnvironmentInformation vsEnvironmentInformation, [NotNull] string name)
-			=> vsEnvironmentInformation
-				.DevEnvInstallDir
-				.Combine(RelativePath.Parse("PublicAssemblies\\" + name + ".dll"))
-				.FullPath;
+		// [NotNull]
+		// [Pure]
+		// private static string CreateDevEnvPublicAssemblyName([NotNull] IVsEnvironmentInformation vsEnvironmentInformation, [NotNull] string name)
+		// 	=> vsEnvironmentInformation
+		// 		.DevEnvInstallDir
+		// 		.Combine(RelativePath.Parse("PublicAssemblies\\" + name + ".dll"))
+		// 		.FullPath;
 
 		public T4Environment(
 			// [NotNull] IVsEnvironmentInformation vsEnvironmentInformation,

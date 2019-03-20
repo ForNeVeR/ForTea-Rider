@@ -10,7 +10,7 @@ namespace GammaJul.ReSharper.ForTea {
 
 	[ZoneMarker]
 	public class ZoneMarker : IPsiLanguageZone,
-		IRequire<ISinceVs10EnvZone>,
+		// IRequire<ISinceVs10EnvZone>,
 		IRequire<ILanguageCSharpZone>,
 		IRequire<ICodeEditingZone>,
 		IRequire<DaemonZone>,

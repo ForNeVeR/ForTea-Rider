@@ -9,6 +9,6 @@
   <description>T4 templates support in Rider</description>
   <extensions defaultExtensionNs="com.intellij">
       <fileTypeFactory id="T4" implementation="com.jetbrains.rider.t4plugin.T4FileTypeFactory" />
-
+    <backend.markup.adapterFactory language="T4" implementationClass="com.jetbrains.rdclient.daemon.FrontendMarkupAdapterFactory" />
   </extensions>
 </idea-plugin>
